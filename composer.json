@@ -1,0 +1,13 @@
+{
+    "authors": [
+        {
+            "name": "Artur Melkonyan",
+            "email": "artur_am@ukr.net",
+            "homepage": "https://github.com/Artur-am/test1-php",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "phpdocumentor/phpdocumentor": "*"
+    }
+}
