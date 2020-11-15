@@ -1,0 +1,53 @@
+.table-lists
+    width: 80%
+    margin: 0 auto
+    padding: 0 0 8em 0
+    box-sizing: border-box
+
+    & tr
+        &:nth-child(2n+1)
+            background-color: #323C50
+        &:nth-child(2)
+            background-color: #2C3446
+
+    & th
+        padding-top: 15px
+        padding-bottom: 15px
+        background-color: #1F2739
+        font-size: 21px
+        font-weight: bold
+        color: #ffffff
+        text-shadow: 0 0 2px #000000
+        box-sizing: border-box
+
+    & td
+        padding-left: 11px
+        padding-top: 19px
+        padding-bottom: 19px
+        font-size: 15px
+        cursor: pointer
+        box-shadow: 0 2px 2px -2px #0E1119
+        box-sizing: border-box
+        position: relative
+        &:first-child input
+            color: #FB667A
+        &:hover
+            background-color: #FFF842
+            color: #403E10
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px
+            transform: translate3d(6px, -6px, 0)
+            transition-delay: 0s
+            transition-duration: 0.4s
+            transition-property: all
+            transition-timing-function: line
+            & .icon-edit
+                font-size: 19px
+                font-weight: 900
+.icon-edit
+    position: absolute
+    color: #000000
+    right: 5px
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 0px
+    transition: font-size .3s ease
