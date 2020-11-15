@@ -21,6 +21,18 @@ class Router
 
         $this->_req(PATH_MODULES . $model_name . '.php', 'Could not find module');
         $this->_req(PATH_CONTROLLERS . $controller_name . '.php', 'Could not find controller');
+
+        $controller = new $controller_name;
+		$action = $action_name;
+		$controller->model();
+		if(method_exists($controller, $action))
+		{
+			$controller->$action();
+		}
+		else
+		{
+            self::ErrorPage404();
+		}
     }
     /**
      * @param mixed $path
@@ -30,10 +42,23 @@ class Router
      */
     private function _req($path, $message)
     {
+        $path = strtolower($path);
         if(false===is_file($path))
         {
-            throw new Exception($message ."\n path: <b>{$path}</b>");
+            self::ErrorPage404();
+            // throw new Exception($message ."\n path: <b>{$path}</b>");
         }
         require_once $path;
+    }
+    /**
+     * @return [type]
+     */
+    public static function ErrorPage404()
+    {
+        $host = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/';
+        header('HTTP/1.1 404 Not Found');
+		header("Status: 404 Not Found");
+        header('Location:'.$host.'404.html');
+        exit;
     }
 }
