@@ -1,4 +1,25 @@
-.td-input[disabled="true"]
+.td-input:disabled,
+.ts-select:disabled
     background-color: transparent
     border-color: transparent
-    color: #000
+    color: #000 
+
+.ts-select:disabled
+    -moz-appearance: none /* Firefox */
+    -webkit-appearance: none /* Safari and Chrome */
+    appearance: none
+
+.custom-checkbox
+    display: none
+    & + label
+        cursor: pointer
+        display: block
+        text-align: center
+        &::before
+            content: '♀'
+            font-size: 19px
+    &:enabled + label
+        color: orangered
+    &:checked + label
+        &::before
+            content: '♂'

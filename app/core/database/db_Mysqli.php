@@ -64,7 +64,7 @@ class db_Mysqli
         $stmt = $this->link->prepare($sql);
         $result;
 
-        if(0!=$this->link->errno) throw new ExceptionHandler("Prepare an SQL statement for execution [{$this->link->error}]", 0, 'db', __FILE__, __LINE__);
+        if(0!=$this->link->errno) throw new Exception("Prepare an SQL statement for execution [{$this->link->error}]");
 
         for( $n = 0, $count = count( $values ); $n < $count; $n++ )
         {
@@ -123,7 +123,15 @@ class db_Mysqli
         }
         return $this->_prepare($args['sql'], $args['values']);
     }
-    public function update(){}
+    /**
+     * @param mixed $args
+     * 
+     * @return [type]
+     */
+    public function update($args)
+    {
+        return $this->insert($args);
+    }
     public function delete(){}
     public function request()
     {

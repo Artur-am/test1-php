@@ -1,7 +1,38 @@
-.td-input[disabled="true"] {
+@charset "UTF-8";
+.td-input:disabled,
+.ts-select:disabled {
   background-color: transparent;
   border-color: transparent;
   color: #000;
+}
+
+.ts-select:disabled {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.custom-checkbox {
+  display: none;
+}
+
+.custom-checkbox + label {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+
+.custom-checkbox + label::before {
+  content: '♀';
+  font-size: 19px;
+}
+
+.custom-checkbox:enabled + label {
+  color: orangered;
+}
+
+.custom-checkbox:checked + label::before {
+  content: '♂';
 }
 
 .table-lists {

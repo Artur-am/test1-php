@@ -22,27 +22,41 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($lists as $list): ?>
+            <?php foreach($lists as $id=>$list): ?>
             <tr data-id="<?php echo $list['id']; ?>">
                 <td>
-                    <input class="td-input" disabled="true" name="firstName" value="<?php echo $list['firstName'];?>">
+                    <input class="td-input" disabled="true" type="text" name="firstName" value="<?php echo $list['firstName'];?>">
                     <i class="icon-edit js-edit">&#9998;</i>
                 </td>
                 <td>
-                    <input class="td-input" disabled="true" name="lastName" value="<?php echo $list['lastName'];?>">
+                    <input class="td-input" disabled="true" type="text" name="lastName" value="<?php echo $list['lastName'];?>">
                     <i class="icon-edit js-edit">&#9998;</i>
                 </td>
                 <td>
-                    <input class="td-input" disabled="true" name="age" value="<?php echo $list['age'];?>">
+                    <input class="td-input" disabled="true" type="text" name="age" value="<?php echo $list['age'];?>">
                     <i class="icon-edit js-edit">&#9998;</i>
                 </td>
-                <td data-floor="<?php echo $list['floor'];?>"><?php echo $list['floor'];?></td>
-                <td>
-                    <input class="td-input" disabled="true" name="group_name" value="<?php echo $list['group_name'];?>">
+                <td data-floor="<?php echo $list['floor'];?>">
+                    <input id="input-floor-<?php echo $id;?>" class="td-input custom-checkbox" disabled="true" type="checkbox" name="floor" <?php echo (false==$list['floor'])?'':'checked';?>>
+                    <label for="input-floor-<?php echo $id;?>"></label>
                     <i class="icon-edit js-edit">&#9998;</i>
                 </td>
                 <td>
-                    <input class="td-input" disabled="true" name="faculty_name" value="<?php echo $list['faculty_name'];?>">
+                    <input class="td-input" hidden disabled="true" type="text" name="group_id" value="<?php echo $list['group_id'];?>">
+                    <select class="ts-select" name="select-group" disabled="true" >
+                        <?php foreach($groups as $group): ?>
+                            <option value="<?php echo $group['id'];?>"<?php echo ($list['group_id']==$group['id'])?' selected':'' ?>><?php echo $group['name'];?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <i class="icon-edit js-edit">&#9998;</i>
+                </td>
+                <td>
+                    <input class="td-input" hidden disabled="true" type="text" name="faculty_id" value="<?php echo $list['faculty_id'];?>">
+                    <select class="ts-select" name="select-faculty" disabled="true" >
+                        <?php foreach($faculty as $f): ?>
+                            <option value="<?php echo $f['id'];?>"<?php echo ($list['faculty_id']==$f['id'])?' selected':'' ?>><?php echo $f['name'];?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <i class="icon-edit js-edit">&#9998;</i>
                 </td>
             </tr>
