@@ -1,7 +1,5 @@
 function Ajax(args)
 {
-    if(!('action' in args)) console.warn('Query Ajax not found action arg');
-
     args.data.token = window.token;
 
     let url = window.location.href;
@@ -42,19 +40,20 @@ function Ajax(args)
         {
             if(req.status == 200)
             {
+                console.log(req.responseText);
                 const data = (function( data ) {
                     try {
                         return JSON.parse( data );
                     } catch (err) {
-                        return false;
+                        return {success: false};
                     }
                 })(req.responseText);
 
                 if(true===data.success)
                 {
-                    
                     args.success(data);
                 }
+                
             }
         }
     }

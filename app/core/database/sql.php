@@ -23,12 +23,49 @@ class Sql
     {
         return [ 'sql' => "SELECT `id`, `name` FROM `faculty`"];
     }
-    public static function update_user($id, $tdName, $value)
+    /**
+     * @param int $id
+     * @param string $tdName
+     * @param string $value
+     * 
+     * @return [type]
+     */
+    public static function update_user(int $id, string $tdName, string $value)
     {
         $type = gettype($value);
         return [
             'sql' => "UPDATE `user` SET `{$tdName}` = ? WHERE `user`.`id` = {$id}",
             'values' => [ $type[0], $value ]
+        ];
+    }
+    /**
+     * @param int $ids
+     * 
+     * @return [type]
+     */
+    public function remove_users(int $id)
+    {
+        return [
+            'sql' => "DELETE FROM `user` WHERE `id` IN ({$id})"
+        ];
+    }
+    /**
+     * @param string $firstName
+     * @param string $lastName
+     * @param int $age
+     * @param int $floor
+     * @param int $group
+     * @param int $faculty
+     * 
+     * @return [type]
+     */
+    public function create_user(string $firstName,string $lastName,int $age,int $floor,int $group,int $faculty)
+    {
+        return [
+            'sql' => "INSERT INTO `user` (`id`, `firstName`, `lastName`, `age`, `floor`, `group_id`, `faculty_id`)
+                VALUES
+                    (NULL, ?, ?, ?, ?, ?, ?)",
+            'values' => ['ssiiii',$firstName,$lastName,$age,$floor,$group,$floor]
         ];
     }
 }

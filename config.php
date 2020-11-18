@@ -27,5 +27,3 @@ session_start();
     require_once PATH_CORE . 'model.php';
     require_once PATH_CORE . 'router.php';
     require_once PATH_CORE . 'view.php';
-
-    // register_shutdown_function('setAjaxToken');

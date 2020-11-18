@@ -7,8 +7,12 @@
     & tr
         &:nth-child(2n+1)
             background-color: #323C50
-        &:nth-child(2)
+
+        &:nth-child(2n)
             background-color: #2C3446
+        
+        &:last-child
+            background-color: transparent
 
     & th
         padding-top: 15px
@@ -21,15 +25,14 @@
         box-sizing: border-box
 
     & td
-        padding-left: 11px
-        padding-top: 19px
-        padding-bottom: 19px
+        padding: 19px 11px
         font-size: 15px
         cursor: pointer
+        text-align: center
         box-shadow: 0 2px 2px -2px #0E1119
         box-sizing: border-box
         position: relative
-        &:first-child input
+        &:first-child .td-input
             color: #FB667A
         &:hover
             background-color: #FFF842
@@ -43,6 +46,22 @@
             & .icon-edit
                 font-size: 19px
                 font-weight: 900
+
+.reset-td
+    & td
+        padding: 0px 0px
+        border-bottom-width: 0px
+        box-shadow: 0 0 0 transparent
+        cursor: revert
+        &:hover
+            transform: none
+            background-color: transparent
+            box-shadow: 0 0 0 transparent
+
+.clone-element,
+.close
+    display: none
+
 .icon-edit
     position: absolute
     color: #000000

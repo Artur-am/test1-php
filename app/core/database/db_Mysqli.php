@@ -11,12 +11,12 @@ class db_Mysqli
     private $link;
 
     /**
-     * @param mixed $host
-     * @param mixed $login
-     * @param mixed $password
-     * @param mixed $name
+     * @param string $host
+     * @param string $login
+     * @param string $password
+     * @param string $name
      */
-    public function __construct($host, $login, $password, $name)
+    public function __construct(string $host, string $login, string $password, string $name)
     {
         $this->_connection($host, $login, $password, $name);
     }
@@ -26,14 +26,14 @@ class db_Mysqli
     }
 
     /**
-     * @param mixed $host
-     * @param mixed $db_login
-     * @param mixed $db_pass
-     * @param mixed $db_name
+     * @param string $host
+     * @param string $db_login
+     * @param string $db_pass
+     * @param string $db_name
      * 
      * @return [type]
      */
-    private function _connection($host, $db_login, $db_pass, $db_name)
+    private function _connection(string $host, string $db_login, string $db_pass, string $db_name)
     {
         
         $this->link = new mysqli($host, $db_login, $db_pass, $db_name);
@@ -43,21 +43,21 @@ class db_Mysqli
         return true;
     }
     /**
-     * @param mixed $sql
+     * @param string $sql
      * 
      * @return [type]
      */
-    private function _query($sql)
+    private function _query(string $sql)
     {
         return $this->link->query($sql);
     }
     /**
-     * @param mixed $sql
-     * @param mixed $values
+     * @param string $sql
+     * @param array $values
      * 
      * @return [type]
      */
-    private function _prepare($sql, $values)
+    private function _prepare(string $sql, array $values)
     {
         $refs = array();
 
@@ -87,11 +87,11 @@ class db_Mysqli
     }
 
     /**
-     * @param mixed $args
+     * @param array $args
      * 
      * @return [type]
      */
-    public function select($args)
+    public function select(array $args)
     {
         $data = array();
         $result = array();
@@ -111,11 +111,11 @@ class db_Mysqli
         return $data;
     }
     /**
-     * @param mixed $args
+     * @param array $args
      * 
      * @return [type]
      */
-    public function insert($args)
+    public function insert(array $args)
     {
         if(empty($args['values']))
         {
@@ -124,15 +124,23 @@ class db_Mysqli
         return $this->_prepare($args['sql'], $args['values']);
     }
     /**
-     * @param mixed $args
+     * @param array $args
      * 
      * @return [type]
      */
-    public function update($args)
+    public function update(array $args)
     {
         return $this->insert($args);
     }
-    public function delete(){}
+    /**
+     * @param array $args
+     * 
+     * @return [type]
+     */
+    public function delete(array $args)
+    {
+        return $this->insert($args);
+    }
     public function request()
     {
     }

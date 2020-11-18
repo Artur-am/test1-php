@@ -16,10 +16,14 @@
     ]);
 
     $link->insert([
-        'sql' => "INSERT INTO `users` (`id`, `firstName`, `lastName`, `age`, `floor`, `group_id`, `faculty_id`) VALUES
-            (NULL, 'Anton', 'Qwerty', '19', '1', '1', '2'),
-            (NULL, 'Вася', 'Васьович', '18', '1', '2', '1'),
-            (NULL, 'Qwerty', 'Zxcvb', '19', '0', '1', '2')
+        'sql' => "INSERT INTO `user` (`id`, `firstName`, `lastName`, `age`, `floor`, `group_id`, `faculty_id`) VALUES
+            (NULL, 'First Name 1', 'Last Name 1', '21', '1', '2', '2'),
+            (NULL, 'First Name 2', 'Last Name 2', '22', '0', '1', '1'),
+            (NULL, 'First Name 3', 'Last Name 3', '23', '1', '2', '2'),
+            (NULL, 'First Name 4', 'Last Name 4', '24', '0', '1', '1'),
+            (NULL, 'First Name 5', 'Last Name 5', '25', '1', '1', '1'),
+            (NULL, 'First Name 6', 'Last Name 6', '26', '0', '2', '2'),
+            (NULL, 'First Name 7', 'Last Name 7', '27', '1', '1', '2')
         "
     ]);
 

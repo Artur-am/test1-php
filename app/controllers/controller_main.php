@@ -15,7 +15,7 @@ class Controller_Main extends Controller
     public function action_index()
     {
         $data = $this->model->get_data();
-		$this->view->generate('', 'index.php', $data);
+        $this->view->generate('', 'index.php', $data);
     }
 
     /**
@@ -49,5 +49,56 @@ class Controller_Main extends Controller
 
         $this->model->update_user($_POST['id'], $name, $value);
         echo json_encode(['success' => true, 'data' => 7878]);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function action_remove()
+    {
+        $this->is_valid_ajax();
+
+        $ids = explode(',', strip_tags($_POST['id']));
+        $er = [];
+        foreach($ids as $id)
+        {
+            if(!$this->model->remove_users((int)$id))
+            {
+                $er[] = $id;
+            }
+        }
+        echo json_encode(['success' => (empty($er[0])), 'data' => $er]);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function action_create()
+    {
+        $this->is_valid_ajax();
+
+        $firstName = htmlspecialchars(strip_tags(trim($_POST['firstName'])));
+        $lastName = htmlspecialchars(strip_tags(trim($_POST['lastName'])));
+        
+        if(
+            !((int)$_POST['age']) ||
+            !is_numeric($_POST['floor']) ||
+            !((int)$_POST['group']) ||
+            !((int)$_POST['faculty'])
+        ){
+            echo json_encode(['success' => false, 'data' => null ]);
+            exit;
+        }
+
+        $is = $this->model->create_user(
+            $firstName,
+            $lastName,
+            $_POST['age'],
+            $_POST['floor'],
+            $_POST['group'],
+            $_POST['faculty']
+        );
+
+        echo json_encode(['success' => $is, 'data' => null]);
     }
 }

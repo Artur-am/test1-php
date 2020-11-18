@@ -11,5 +11,9 @@
 })(Element.prototype);
 
 
+//= ./user.js
 //= ./ajax.js
 //= ./edit-user.js
+//= ./create-user.js
+//= ./remove-user.js
+//= ./add-user.js

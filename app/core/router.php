@@ -35,12 +35,12 @@ class Router
 		}
     }
     /**
-     * @param mixed $path
-     * @param mixed $message
+     * @param string $path
+     * @param string $message
      * 
      * @return [type]
      */
-    private function _req($path, $message)
+    private function _req(string $path, string $message)
     {
         $path = strtolower($path);
         if(false===is_file($path))

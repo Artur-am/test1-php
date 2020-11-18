@@ -73,9 +73,8 @@
 
         if(!input||!parent) return console.warn('');
 
-        let selected = parent.querySelector('input:enabled');
-        let selected2 = parent.querySelector('select:enabled');
-        
+        let selected = parent.querySelector('.td-input:enabled');
+        let selected2 = parent.querySelector('.ts-select:enabled');
         if(selected)
         {
             selected.disabled = true;
@@ -98,7 +97,6 @@
     }
 
 }(document.querySelectorAll('.js-edit')));
-
 
 
 (function(selects){ if(!selects) return null;

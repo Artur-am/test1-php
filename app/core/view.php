@@ -6,13 +6,13 @@
 class View
 {
     /**
-     * @param mixed $content_view
-     * @param mixed $template_view
+     * @param string $content_view
+     * @param string $template_view
      * @param null $data
      * 
      * @return [type]
      */
-    public function generate($content_view, $template_view, $data = null)
+    public function generate(string $content_view, string $template_view, $data = null)
 	{
         $this->setAjaxToken();
         if(is_file(PATH_THEME . $template_view))

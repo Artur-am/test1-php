@@ -23,3 +23,45 @@
     &:checked + label
         &::before
             content: '♂'
+
+.create
+    &-input,
+    &-select
+        width: 100%
+        padding: 18px 7px
+        border-width: 0px
+        color: #000000
+        background-color: #ffffff
+        box-sizing: border-box
+        &:focus ~ label,
+        &:not(:placeholder-shown) + label
+            top: 28%
+            left: 15px
+            font-size: 12px
+            transform: translateY(-28%)
+    &-label
+        position: absolute
+        top: 50%
+        left: 20px
+        font-size: 15px
+        transform: translateY(-50%)
+        transition: .3s ease
+
+.tr-form
+    & td
+        position: relative
+
+.btn-create,
+.btn-add,
+.btn-remove
+    width: 100%
+    padding-top: 15px
+    padding-bottom: 15px
+    border-radius: 3px
+    font-size: 18px
+    font-weight: 900
+    cursor: pointer
+    outline: none
+    border: 1px solid transparent
+    border-bottom: 1px double #1f2739
+    background-color: transparent

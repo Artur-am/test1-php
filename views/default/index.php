@@ -10,13 +10,18 @@
 <body>
     <h1 class="page-title">HOME</h1>
 
+    
+    <form class="form-create" name="create" id="create" action=""></form>
+    <form class="form-remove" name="remove" id="remove" action=""></form>
+
     <table class="table-lists">
         <thead>
             <tr>
+                <th>&#128465;</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
-                <th>Пол</th>
                 <th>Возраст</th>
+                <th>Пол</th>
                 <th>Группа</th>
                 <th>Факультет</th>
             </tr>
@@ -24,6 +29,9 @@
         <tbody>
             <?php foreach($lists as $id=>$list): ?>
             <tr data-id="<?php echo $list['id']; ?>">
+                <td>
+                    <input form="remove" type="checkbox" name="remove_id" value="<?php echo $list['id'];?>">
+                </td>
                 <td>
                     <input class="td-input" disabled="true" type="text" name="firstName" value="<?php echo $list['firstName'];?>">
                     <i class="icon-edit js-edit">&#9998;</i>
@@ -61,10 +69,52 @@
                 </td>
             </tr>
             <?php endforeach; ?>
+
+            <tr class="tr-form clone-element">
+                <td></td>
+                <td>
+                    <input data-form="create" id="firstName" class="create-input" type="text" name="firstName" placeholder="" />
+                    <label class="create-label" for="firstName">Имя</label>
+                </td>
+                <td>
+                    <input data-form="create" id="lastName" class="create-input" type="text" name="lastName" placeholder="" />
+                    <label class="create-label" for="lastName">Фамилия</label>
+                </td>
+                <td>
+                    <input data-form="create" id="number" class="create-input" type="number" name="age" value="" />
+                    <label class="create-label" for="number">Возраст</label>
+                </td>
+                <td>
+                    <input data-form="create" id="floor" class="td-input custom-checkbox" type="checkbox" name="floor">
+                    <label for="floor"></label>
+                </td>
+                <td>
+                    <select data-form="create" name="select-group">
+                        <?php foreach($groups as $group): ?>
+                            <option value="<?php echo $group['id'];?>"><?php echo $group['name'];?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+                <td>
+                    <select data-form="create" name="select-faculty" >
+                        <?php foreach($faculty as $f): ?>
+                            <option value="<?php echo $f['id'];?>"><?php echo $f['name'];?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="reset-td">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button form="remove" type="submit" name="remove" class="btn-remove close">Remove</button></td>
+                <td><button form="create" type="submit" class="btn-add close">Add</button></td>
+                <td><button type="submit" class="btn-create">Create</button></td>
+            </tr>
+
         </tbody>
     </table>
-
-    <button name="test">+</button>
     
     <script src="<?php echo THEME_SRC;?>assets/js/main.min.js"></script>
 </body>
